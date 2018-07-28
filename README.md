@@ -1,6 +1,6 @@
 # flutter_expenses_tracker
 
-A new Flutter project.
+A Flutter project to track your daily expenses. 
 
 ## Getting Started
 
