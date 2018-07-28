@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -25,10 +27,17 @@ class _MyHomePageState extends State<MyHomePage> {
   int _total = 0;
   var _now = new DateFormat.yMMMd().format(new DateTime.now());
 
-  void _incrementTotal() {
+  void _addTotalExpenses() {
     setState(() {
       _total++;
     });
+  }
+
+   void showAddExpensesDialog({ BuildContext context, Widget child }) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => child,
+    );
   }
 
   @override
@@ -59,7 +68,29 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementTotal,
+        onPressed: () {
+              showAddExpensesDialog(
+                context: context,
+                child: new SimpleDialog(
+                  title: const Text(
+                    'Add New Expenses'),
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: <Widget>[
+                          TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Expense Item'
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              );
+            },
         child: new Icon(Icons.add),
         backgroundColor: Colors.pinkAccent,
       ),
