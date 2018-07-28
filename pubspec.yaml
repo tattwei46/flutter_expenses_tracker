@@ -2,8 +2,7 @@ name: flutter_expenses_tracker
 description: A new Flutter project.
 
 dependencies:
-  intl: ^0.15.7
-  
+
   flutter:
     sdk: flutter
 
